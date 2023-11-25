@@ -21,7 +21,7 @@ const login = async (req, res) => {
     const orginalHostname = urlObject.hostname;
 
     let isLocalhost = false;
-    if (orginalHostname === '127.0.0.1' || orginalHostname === 'localhost') {
+    if (orginalHostname === 'localhost') {
       // Connection is from localhost
       isLocalhost = true;
     }

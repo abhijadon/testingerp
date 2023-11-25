@@ -28,14 +28,11 @@ app.use(cors(corsOptions));
 
 // setting cors at one place for all the routes
 // putting cors as first in order to avoid unneccessary requests from unallowed origins
-
-// app.use(function (req, res, next) {
-//   if (req.url.includes('/api')) {
-//     cors(corsOptions)(req, res, next);
-//   } else {
-//     cors()(req, res, next);
-//   }
-// });
+// serves up static files from the public folder. Anything in public/ will just be served up as the file it is
+app.use(express.static(path.join(__dirname, '../frontend/dist')));
+app.get('*', function (req, res) {
+  res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
+});
 
 // serves up static files from the public folder. Anything in public/ will just be served up as the file it is
 
