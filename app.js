@@ -33,6 +33,9 @@ app.use(cors(corsOptions));
 // app.get('*', function (req, res) {
 //   res.sendFile(path.join(__dirname, './frontend/dist/index.html'));
 // });
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
 
 // serves up static files from the public folder. Anything in public/ will just be served up as the file it is
 
