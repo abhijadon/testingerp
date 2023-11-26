@@ -1,15 +1,31 @@
-require('dotenv').config({ path: __dirname + '/../.env' });
-require('dotenv').config({ path: __dirname + '/../.env.local' });
-
-const mongoose = require('mongoose');
-mongoose.connect(process.env.DATABASE);
-mongoose.Promise = global.Promise; // Tell Mongoose to use ES6 promises
+const path = require('path');
 const fs = require('fs');
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+
+dotenv.config({ path: path.join(__dirname, '..', '.env') });
+dotenv.config({ path: path.join(__dirname, '..', '.env.local') });
+
+mongoose
+  .connect(process.env.DATABASE, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    serverSelectionTimeoutMS: 5000, // Adjust the timeout value as needed
+  })
+  .then(() => {
+    console.log('MongoDB is connected');
+  })
+  .catch((error) => {
+    console.error('Error connecting to MongoDB:', error);
+    process.exit(1);
+  });
+
+mongoose.Promise = global.Promise;
 
 async function setupApp() {
   try {
     const Admin = require('../models/coreModels/Admin');
-    var newAdmin = new Admin();
+    const newAdmin = new Admin();
     const passwordHash = newAdmin.generateHash('Abhishek12345');
 
     await new Admin({
@@ -23,46 +39,48 @@ async function setupApp() {
     console.log('👍 Admin created : Done!');
 
     const Setting = require('../models/coreModels/Setting');
-
-    const appConfig = JSON.parse(fs.readFileSync(__dirname + '/config/appConfig.json', 'utf-8'));
-    const companyConfig = JSON.parse(
-      fs.readFileSync(__dirname + '/config/companyConfig.json', 'utf-8')
-    );
-    const financeConfig = JSON.parse(
-      fs.readFileSync(__dirname + '/config/financeConfig.json', 'utf-8')
-    );
-    const crmConfig = JSON.parse(fs.readFileSync(__dirname + '/config/crmConfig.json', 'utf-8'));
-    const customConfig = JSON.parse(
-      fs.readFileSync(__dirname + '/config/customConfig.json', 'utf-8')
-    );
-
-    const moneyFormatConfig = JSON.parse(
-      fs.readFileSync(__dirname + '/config/moneyFormatConfig.json', 'utf-8')
-    );
-
-    await Setting.insertMany([
-      ...appConfig,
-      ...companyConfig,
-      ...financeConfig,
-      ...crmConfig,
-      ...moneyFormatConfig,
-      ...customConfig,
-    ]);
-    console.log('👍 Settings created : Done!');
-
     const Email = require('../models/coreModels/Email');
-    const emailTemplate = JSON.parse(
-      fs.readFileSync(__dirname + '/config/emailTemplate.json', 'utf-8')
-    );
 
-    await Email.insertMany([...emailTemplate]);
-    console.log('👍 Email Templates Created : Done !');
-    console.log('🥳 Setup completed :Success!');
+    const readJsonFile = (filename) => {
+      const filePath = path.join(__dirname, 'config', `${filename}.json`);
+      try {
+        const fileContent = fs.readFileSync(filePath, 'utf-8');
+        return JSON.parse(fileContent);
+      } catch (error) {
+        console.error(`Error reading ${filename}.json file:`, error);
+        process.exit(1);
+      }
+    };
+
+    const [appConfig, companyConfig, financeConfig, crmConfig, moneyFormatConfig, customConfig] = [
+      'appConfig',
+      'companyConfig',
+      'financeConfig',
+      'crmConfig',
+      'moneyFormatConfig',
+      'customConfig',
+    ].map(readJsonFile);
+
+    await Promise.all([
+      Setting.insertMany([
+        ...appConfig,
+        ...companyConfig,
+        ...financeConfig,
+        ...crmConfig,
+        ...moneyFormatConfig,
+        ...customConfig,
+      ]),
+      Email.insertMany([...readJsonFile('emailTemplate')]),
+    ]);
+
+    console.log('👍 Settings created : Done!');
+    console.log('👍 Email Templates Created : Done!');
+    console.log('🥳 Setup completed: Success!');
     process.exit();
   } catch (e) {
     console.log('\n🚫 Error! The Error info is below');
-    console.log(e);
-    process.exit();
+    console.error(e);
+    process.exit(1);
   }
 }
 
