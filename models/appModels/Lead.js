@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-const leadSchema = new mongoose.Schema({
+const applicationSchema = new mongoose.Schema({
   removed: {
     type: Boolean,
     default: false,
@@ -60,4 +60,4 @@ const leadSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('Lead', leadSchema);
+module.exports = mongoose.model('Applications', applicationSchema);
