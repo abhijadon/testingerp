@@ -34,7 +34,7 @@ app.use(cors(corsOptions));
 //   res.sendFile(path.join(__dirname, './frontend/dist/index.html'));
 // });
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+  res.send('Hii project name ERP_SODE!');
 });
 
 // serves up static files from the public folder. Anything in public/ will just be served up as the file it is
