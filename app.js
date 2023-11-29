@@ -33,8 +33,17 @@ app.use(cors(corsOptions));
 // app.get('*', function (req, res) {
 //   res.sendFile(path.join(__dirname, './frontend/dist/index.html'));
 // });
-app.get('/', (req, res) => {
-  res.send('Hii project name ERP_SODE!');
+// Enable CORS for all routes
+
+app.get('/api/institutes', async (req, res) => {
+  try {
+    // Simulate fetching institute data from a JSON file
+    const institutes = require('./data.json');
+    res.json(institutes);
+  } catch (error) {
+    console.error('Error fetching institutes:', error);
+    res.status(500).send('Internal Server Error');
+  }
 });
 
 // serves up static files from the public folder. Anything in public/ will just be served up as the file it is

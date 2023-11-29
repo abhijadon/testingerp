@@ -1,0 +1,116 @@
+[
+  {
+    "label": "HES",
+    "value": "HES",
+    "universities": [
+      {
+        "label": "SGVU",
+        "value": "SGVU",
+        "fields": [
+          {
+            "key": "checkbox",
+            "label": "Want to send",
+            "id": "SGVUWantToSend",
+            "type": "checkbox"
+          },
+          {
+            "key": "studentName",
+            "label": "Student Name",
+            "place": "Student Name",
+            "id": "SGVUStudentName",
+            "type": "text"
+          },
+          {
+            "key": "email",
+            "label": "Email-id",
+            "place": "Enter Email-id",
+            "id": "EmailID",
+            "type": "email"
+          },
+          {
+            "key": "phone",
+            "label": "Phone",
+            "place": "Enter Phone Number",
+            "id": "phone",
+            "type": "number"
+          },
+          {
+            "key": "FatherName",
+            "label": "Father Name",
+            "place": "Enter Father Name",
+            "id": "Father Name",
+            "type": "text"
+          },
+          {
+            "key": "MotherName",
+            "label": "Mother Name",
+            "place": "Enter Mother Name",
+            "id": "Mother Name",
+            "type": "text"
+          },
+          {
+            "key": "session",
+            "label": "Session",
+            "place": "eg: 2020-2023",
+            "id": "Session",
+            "type": "number"
+          },
+          {
+            "key": "sessionType",
+            "label": "Session Type",
+            "id": "SessionType",
+            "place": "Enter Session Type",
+            "type": "select",
+            "options": ["January", "July", "N/A"]
+          },
+          {
+            "key": "CourseName",
+            "label": "Course Name",
+            "id": "CourseName",
+            "place": "Enter Course Name",
+            "type": "select",
+            "options": ["MBA", "BBA", "B.Sc"]
+          },
+          {
+            "key": "Specialization (Optional)",
+            "label": "Specialization",
+            "place": "Enter Specialization",
+            "id": "Specialization",
+            "type": "text"
+          },
+          {
+            "key": "Date of Birth",
+            "label": "Date of Birth",
+            "place": "Enter Date of Birth",
+            "id": "DOB",
+            "type": "calendar"
+          }
+        ]
+      },
+
+      {
+        "label": "CU",
+        "value": "CU",
+        "fields": [
+          {
+            "key": "checkbox",
+            "label": "Want to send",
+            "id": "CUWantToSend",
+            "type": "checkbox"
+          },
+          {
+            "key": "studentName",
+            "label": "Student Name",
+            "id": "CUStudentName",
+            "type": "text"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "label": "DES",
+    "value": "DES",
+    "universities": []
+  }
+]
