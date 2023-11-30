@@ -4,14 +4,15 @@
     "value": "HES",
     "universities": [
       {
-        "label": "SGVU",
-        "value": "SGVU",
+        "label": "SPU",
+        "value": "SPU",
         "fields": [
           {
-            "key": "checkbox",
-            "label": "Want to send",
-            "id": "SGVUWantToSend",
-            "type": "checkbox"
+            "key": "radio",
+            "label": "Want to send Fee Receipt",
+            "id": "Send",
+            "type": "radio",
+            "options": ["Yes", "No"]
           },
           {
             "key": "studentName",
@@ -32,7 +33,7 @@
             "label": "Phone",
             "place": "Enter Phone Number",
             "id": "phone",
-            "type": "number"
+            "type": "tel"
           },
           {
             "key": "FatherName",
@@ -83,7 +84,95 @@
             "label": "Date of Birth",
             "place": "Enter Date of Birth",
             "id": "DOB",
-            "type": "calendar"
+            "type": "date"
+          },
+          {
+            "key": "Gender",
+            "label": "Gender",
+            "id": "Gender",
+            "place": "Gender",
+            "type": "select",
+            "options": ["Male", "Female", "Other"]
+          },
+          {
+            "key": "Installment Type",
+            "label": "Installment Type",
+            "id": "InstallmentType",
+            "place": "Installment Type",
+            "type": "select",
+            "options": [
+              "1st Installment",
+              "2nd Installment",
+              "3rd Installment",
+              "4th Installment",
+              "5th Installment"
+            ]
+          },
+          {
+            "key": "Payment mode ",
+            "label": "Payment mode ",
+            "id": "PaymentMode ",
+            "type": "select",
+            "options": ["DES Bank Account/UPI", "University Bank Account", "PayUMoney", "Cash/DD"]
+          },
+          {
+            "key": "Total Course Fee",
+            "label": "Total Course Fee",
+            "place": "eg: 20000",
+            "id": "Total Course Fee",
+            "type": "number"
+          },
+          {
+            "key": "Total Paid Amount",
+            "label": "Total Paid Amount",
+            "place": "eg: 20000",
+            "id": "Total Paid Amount",
+            "type": "number"
+          },
+          {
+            "key": "Paid Amount",
+            "label": "Paid Amount",
+            "place": "eg: 20000",
+            "id": "Paid Amount",
+            "type": "number"
+          },
+          {
+            "key": "Due Fee Amount",
+            "label": "Due Fee Amount",
+            "place": "eg: 20000",
+            "id": "Due Fee Amount",
+            "type": "number"
+          },
+          {
+            "key": "Counselor Email",
+            "label": "Counselor Email",
+            "place": "Enter Counselor Email",
+            "id": "CounselorEmail",
+            "type": "email"
+          },
+          {
+            "key": "Loan",
+            "label": "Interested for Loan",
+            "id": "Loan",
+            "type": "radio",
+            "options": ["Yes", "No"]
+          },
+          {
+            "key": "AdditionalComments",
+            "label": "Additional Comments",
+            "place": "Enter additional comments here",
+            "id": "AdditionalComments",
+            "type": "textarea"
+          },
+          {
+            "id": "file1",
+            "label": "Upload Payment Screenshot",
+            "type": "file"
+          },
+          {
+            "id": "file2",
+            "label": "Student Documents Upload",
+            "type": "file"
           }
         ]
       },
