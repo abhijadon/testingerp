@@ -35,17 +35,6 @@ app.use(cors(corsOptions));
 // });
 // Enable CORS for all routes
 
-app.get('/api/institutes', async (req, res) => {
-  try {
-    // Simulate fetching institute data from a JSON file
-    const institutes = require('./data.json');
-    res.json(institutes);
-  } catch (error) {
-    console.error('Error fetching institutes:', error);
-    res.status(500).send('Internal Server Error');
-  }
-});
-
 // serves up static files from the public folder. Anything in public/ will just be served up as the file it is
 
 // Takes the raw requests and turns them into usable properties on req.body
