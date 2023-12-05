@@ -23,13 +23,11 @@ const applicationSchema = new mongoose.Schema({
   sendfeereceipt: {
     type: String,
     trim: true,
-    required: true,
   },
 
   studentid: {
     type: String,
     trim: true,
-    required: true,
   },
 
   studentname: {
@@ -41,7 +39,6 @@ const applicationSchema = new mongoose.Schema({
   phone: {
     type: String,
     trim: true,
-    required: true,
   },
 
   email: {

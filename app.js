@@ -33,7 +33,7 @@ app.use(cors(corsOptions));
 // app.get('*', function (req, res) {
 //   res.sendFile(path.join(__dirname, './frontend/dist/index.html'));
 // });
-// Enable CORS for all routes
+// Enable CORS for all routes 
 
 // serves up static files from the public folder. Anything in public/ will just be served up as the file it is
 
