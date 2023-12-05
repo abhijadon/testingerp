@@ -11,45 +11,142 @@ const applicationSchema = new mongoose.Schema({
     default: true,
   },
 
-  studentid: {
-    type: String,
-    trim: true,
-    required: true,
-  },
-  studentname: {
-    type: String,
-    trim: true,
-    required: true,
-  },
-  phone: {
-    type: String,
-    trim: true,
-    required: true,
-  },
-  email: {
-    type: String,
-    trim: true,
-    lowercase: true,
-    unique: true,
-  },
-  coursename: {
+  institute: {
     type: String,
     trim: true,
   },
   university: {
     type: String,
     trim: true,
+  },
+
+  sendfeereceipt: {
+    type: String,
+    trim: true,
     required: true,
+  },
+
+  studentid: {
+    type: String,
+    trim: true,
+    required: true,
+  },
+
+  studentname: {
+    type: String,
+    trim: true,
+    required: true,
+  },
+
+  phone: {
+    type: String,
+    trim: true,
+    required: true,
+  },
+
+  email: {
+    type: String,
+    trim: true,
+    lowercase: true,
     unique: true,
   },
-  state: {
+
+  fatherName: {
     type: String,
     trim: true,
   },
-  lms: {
+
+  motherName: {
     type: String,
     trim: true,
   },
+
+  session: {
+    type: String,
+    trim: true,
+  },
+
+  sessionType: {
+    type: String,
+    trim: true,
+  },
+
+  courseName: {
+    type: String,
+    trim: true,
+  },
+
+  specialization: {
+    type: String,
+    trim: true,
+  },
+
+  dob: {
+    type: String,
+    trim: true,
+  },
+
+  gender: {
+    type: String,
+    trim: true,
+  },
+
+  installmentType: {
+    type: String,
+    trim: true,
+  },
+
+  paymentMode: {
+    type: String,
+    trim: true,
+  },
+
+  totalCourseFee: {
+    type: String,
+    trim: true,
+  },
+
+  totalPaidAmount: {
+    type: String,
+    trim: true,
+  },
+
+  paidAmount: {
+    type: String,
+    trim: true,
+  },
+
+  duefeeAmount: {
+    type: String,
+    trim: true,
+  },
+
+  counselorEmail: {
+    type: String,
+    trim: true,
+    lowercase: true,
+  },
+
+  interestedLoan: {
+    type: String,
+    trim: true,
+  },
+
+  additional: {
+    type: String,
+    trim: true,
+  },
+
+  file1: {
+    type: String,
+    trim: true,
+  },
+
+  file2: {
+    type: String,
+    trim: true,
+  },
+
   status: {
     type: String,
     default: 'new',
