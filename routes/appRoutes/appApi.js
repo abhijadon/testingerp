@@ -90,7 +90,7 @@ router.route('/client/filter').get(hasPermission('read'), catchErrors(clientCont
 router.route('/client/summary').get(hasPermission('read'), catchErrors(clientController.summary));
 
 // //_____________________________________ API for leads __________________________________________________
-router.route('/lead/create').post(hasPermission('create'), catchErrors(leadController.create));
+router.route('/lead/create').post(catchErrors(leadController.create));
 router.route('/lead/read/:id').get(hasPermission('read'), catchErrors(leadController.read));
 router.route('/lead/update/:id').patch(hasPermission('update'), catchErrors(leadController.update));
 router
