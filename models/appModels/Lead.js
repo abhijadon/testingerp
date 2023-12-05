@@ -15,7 +15,7 @@ const applicationSchema = new mongoose.Schema({
     type: String,
     trim: true,
   },
-  universities: {
+  abhishek: {
     type: String,
     trim: true,
   },
