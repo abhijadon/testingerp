@@ -74,7 +74,7 @@ router
 //router.route('/setting/delete/:id).delete(hasPermission(),catchErrors(settingController.delete));
 router.route('/setting/search').get(hasPermission('read'), catchErrors(settingController.search));
 router.route('/setting/list').get(hasPermission('read'), catchErrors(settingController.list));
-router.route('/setting/listAll').get(hasPermission('read'), catchErrors(settingController.listAll));
+router.route('/setting/listAll').get(catchErrors(settingController.listAll));
 router.route('/setting/filter').get(hasPermission('read'), catchErrors(settingController.filter));
 router
   .route('/setting/readBySettingKey/:settingKey')
