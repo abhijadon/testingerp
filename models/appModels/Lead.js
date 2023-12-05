@@ -15,7 +15,7 @@ const applicationSchema = new mongoose.Schema({
     type: String,
     trim: true,
   },
-  university: {
+  universities: {
     type: String,
     trim: true,
   },
