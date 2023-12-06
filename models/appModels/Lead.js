@@ -10,7 +10,6 @@ const applicationSchema = new mongoose.Schema({
     type: Boolean,
     default: true,
   },
-
   institute: {
     type: String,
     trim: true,
@@ -18,36 +17,30 @@ const applicationSchema = new mongoose.Schema({
   university: {
     type: String,
     trim: true,
+    required: true,
   },
-
   sendfeereceipt: {
     type: String,
     trim: true,
   },
-
   studentid: {
     type: String,
     trim: true,
   },
-
   studentname: {
     type: String,
     trim: true,
-    required: true,
   },
-
+  email: {
+    type: String,
+    trim: true,
+    unique: true,
+    sparse: true, // Set the sparse property to allow multiple null values
+  },
   phone: {
     type: String,
     trim: true,
   },
-
-  email: {
-    type: String,
-    trim: true,
-    lowercase: true,
-    unique: true,
-  },
-
   fatherName: {
     type: String,
     trim: true,
