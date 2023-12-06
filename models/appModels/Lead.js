@@ -72,7 +72,7 @@ const applicationSchema = new mongoose.Schema({
   },
 
   dob: {
-    type: String,
+    type: Date,
     trim: true,
   },
 
