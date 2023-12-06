@@ -10,7 +10,6 @@ const applicationSchema = new mongoose.Schema({
     type: Boolean,
     default: true,
   },
-
   institute: {
     type: String,
     trim: true,
@@ -18,132 +17,26 @@ const applicationSchema = new mongoose.Schema({
   university: {
     type: String,
     trim: true,
+    required: true,
   },
-
   sendfeereceipt: {
     type: String,
     trim: true,
   },
-
   studentid: {
     type: String,
     trim: true,
   },
-
   studentname: {
     type: String,
     trim: true,
-    required: true,
   },
-
-  phone: {
-    type: String,
-    trim: true,
-  },
-
   email: {
     type: String,
     trim: true,
-    lowercase: true,
     unique: true,
+    sparse: true, // Set the sparse property to allow multiple null values
   },
-
-  fatherName: {
-    type: String,
-    trim: true,
-  },
-
-  motherName: {
-    type: String,
-    trim: true,
-  },
-
-  session: {
-    type: String,
-    trim: true,
-  },
-
-  sessionType: {
-    type: String,
-    trim: true,
-  },
-
-  courseName: {
-    type: String,
-    trim: true,
-  },
-
-  specialization: {
-    type: String,
-    trim: true,
-  },
-
-  dob: {
-    type: String,
-    trim: true,
-  },
-
-  gender: {
-    type: String,
-    trim: true,
-  },
-
-  installmentType: {
-    type: String,
-    trim: true,
-  },
-
-  paymentMode: {
-    type: String,
-    trim: true,
-  },
-
-  totalCourseFee: {
-    type: String,
-    trim: true,
-  },
-
-  totalPaidAmount: {
-    type: String,
-    trim: true,
-  },
-
-  paidAmount: {
-    type: String,
-    trim: true,
-  },
-
-  duefeeAmount: {
-    type: String,
-    trim: true,
-  },
-
-  counselorEmail: {
-    type: String,
-    trim: true,
-    lowercase: true,
-  },
-
-  interestedLoan: {
-    type: String,
-    trim: true,
-  },
-
-  additional: {
-    type: String,
-    trim: true,
-  },
-
-  file1: {
-    type: String,
-    trim: true,
-  },
-
-  file2: {
-    type: String,
-    trim: true,
-  },
-
   status: {
     type: String,
     default: 'new',
@@ -152,6 +45,14 @@ const applicationSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+});
+
+// Middleware to handle dynamic validation based on university selection
+applicationSchema.pre('save', function (next) {
+  if (this.university === 'CU' && !this.studentname) {
+    return next(new Error('Student name is required for CU university.'));
+  }
+  next();
 });
 
 module.exports = mongoose.model('Applications', applicationSchema);
