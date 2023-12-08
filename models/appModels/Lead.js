@@ -1,35 +1,156 @@
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-const applicationSchema = new mongoose.Schema(
-  {
-    removed: {
-      type: Boolean,
-      default: false,
+const applicationSchema = new mongoose.Schema({
+  removed: {
+    type: Boolean,
+    default: false,
+  },
+  enabled: {
+    type: Boolean,
+    default: true,
+  },
+
+  lead_id: {
+    type: String,
+    trim: true,
+  },
+
+  full_name: {
+    type: String,
+    trim: true,
+  },
+
+  contact: {
+    email: {
+      type: String,
+      trim: true,
+      unique: true,
+      lowercase: true,
     },
-    enabled: {
-      type: Boolean,
-      default: true,
+    phone: {
+      type: Number,
+      trim: true,
+    },
+    alternate_phone: {
+      type: Number,
+      trim: true,
+    },
+  },
+
+  education: {
+    course: {
+      type: String,
+      trim: true,
     },
     institute: {
       type: String,
       trim: true,
     },
-
-    // ... Other fields as per your schema
-
-    status: {
+    specialization: {
       type: String,
-      default: 'new',
-    },
-    created: {
-      type: Date,
-      default: Date.now,
+      trim: true,
     },
   },
-  {
-    strict: false, // Allow additional fields
+
+  customfields: {
+    institute: {
+      type: String,
+      trim: true,
+    },
+    university: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    sendfeereceipt: {
+      type: String,
+      trim: true,
+    },
+    fatherName: {
+      type: String,
+      trim: true,
+    },
+    motherName: {
+      type: String,
+      trim: true,
+    },
+    session: {
+      type: String,
+      trim: true,
+    },
+    sessionType: {
+      type: String,
+      trim: true,
+    },
+    dob: {
+      type: Date,
+      trim: true,
+      default: null,
+    },
+    remark: {
+      type: String,
+      default: null,
+      trim: true,
+    },
+
+    gender: {
+      type: String,
+      trim: true,
+    },
+
+    installmentType: {
+      type: String,
+      trim: true,
+    },
+
+    paymentMode: {
+      type: String,
+      trim: true,
+    },
+
+    totalPaidAmount: {
+      type: String,
+      trim: true,
+    },
+
+    paidAmount: {
+      type: String,
+      trim: true,
+    },
+
+    duefeeAmount: {
+      type: String,
+      trim: true,
+    },
+
+    counselorEmail: {
+      type: String,
+      trim: true,
+      lowercase: true,
+    },
+  },
+  status: {
+    type: String,
+    default: 'new',
+  },
+  university: {
+    // Define the 'university' field in the schema
+    type: String,
+    trim: true,
+  },
+  created: {
+    type: Date,
+    default: Date.now,
+  },
+});
+
+// Middleware to handle dynamic validation based on university selection
+applicationSchema.pre('save', function (next) {
+  if (this.university === 'SPU' && !this.full_name) {
+    return next(new Error('Full name is required for SPU university.'));
   }
-);
+  next();
+});
 
 module.exports = mongoose.model('Applications', applicationSchema);
