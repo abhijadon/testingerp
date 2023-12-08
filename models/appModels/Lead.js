@@ -135,11 +135,6 @@ const applicationSchema = new mongoose.Schema(
       type: String,
       default: 'new',
     },
-    university: {
-      // Define the 'university' field in the schema
-      type: String,
-      trim: true,
-    },
     created: {
       type: Date,
       default: Date.now,
@@ -152,7 +147,7 @@ const applicationSchema = new mongoose.Schema(
 
 // Middleware to handle dynamic validation based on university selection
 applicationSchema.pre('save', function (next) {
-  if (this.university === 'SPU' && !this.full_name) {
+  if (this.university_name === 'SPU' && !this.full_name) {
     return next(new Error('Full name is required for SPU university.'));
   }
   next();
