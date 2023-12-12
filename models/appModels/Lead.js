@@ -71,7 +71,7 @@ const applicationSchema = new mongoose.Schema(
       father_name: {
         type: String,
         trim: true,
-      },  
+      },
       mother_name: {
         type: String,
         trim: true,
@@ -125,7 +125,7 @@ const applicationSchema = new mongoose.Schema(
         trim: true,
       },
 
-      counselorEmail: {  
+      counselorEmail: {
         type: String,
         trim: true,
         lowercase: true,
