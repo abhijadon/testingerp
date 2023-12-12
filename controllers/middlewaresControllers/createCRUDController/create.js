@@ -34,12 +34,12 @@ const create = async (Model, req, res) => {
       },
     };
 
-    // Check if the institute is specified and select the appropriate template
+    // Check if the institute, sendFeeReceipt, and email templates are specified
     if (
       institute &&
-      emailTemplates[institute] &&
       sendFeeReceipt &&
-      sendFeeReceipt.toLowerCase() === 'yes'
+      sendFeeReceipt.toLowerCase() === 'yes' &&
+      emailTemplates[institute]
     ) {
       const mailContent = emailTemplates[institute];
       const mailOptions = {
