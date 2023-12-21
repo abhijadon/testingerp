@@ -138,16 +138,16 @@ const applicationSchema = new mongoose.Schema(
         trim: true,
         lowercase: true,
       },
-
-      img: {
-        data: Buffer,
-        contentType: String,
+      status: {
+        type: String,
+        trim: true,
       },
     },
-    status: {
-      type: String,
-      default: 'new',
+    img: {
+      data: Buffer,
+      contentType: String,
     },
+
     created: {
       type: Date,
       default: Date.now,
